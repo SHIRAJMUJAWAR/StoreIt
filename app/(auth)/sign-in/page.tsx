@@ -1,10 +1,6 @@
+import AuthFrom from '@/components/AuthFrom'
 import React from 'react'
 
-const SingIn = () => {
-  return ( <div className='text-black'>
-      SingIn
-    </div>
-  )
-}
+const SingIn = () =>  <AuthFrom type= "sing-in"/>
 
 export default SingIn

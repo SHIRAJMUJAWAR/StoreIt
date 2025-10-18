@@ -1,11 +1,6 @@
+import AuthFrom from '@/components/AuthFrom'
 import React from 'react'
 
-const  SingUp = () => {
-  return (
-    <div>
-      SingUp
-    </div>
-  )
-}
+const  SingUp = () =>  <AuthFrom type= "sing-up"/> 
 
 export default SingUp
