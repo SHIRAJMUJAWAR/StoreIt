@@ -372,12 +372,12 @@ body {
 }
 
 .form-submit-button {
-  background: var(--brand);
+  background: #fa7275;
   border-radius: 9999px;
   height: 66px;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 20px;
-  font-weight: 500;
+  font-weight: 700;
   transition: all 0.2s;
 }
 .form-submit-button:hover {
@@ -395,3 +395,106 @@ body {
   width: fit-content;
   margin: 0 auto;
 }
+.shad-no-focus,
+.shad-no-focus:focus,
+.shad-no-focus:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.shad-input {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.shad-form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 78px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.shad-form-label {
+  color: #9ca3af;
+  padding-top: 0.5rem;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.shad-form-message {
+  color: #ef4444;
+  font-size: 14px;
+  line-height: 20px;
+  margin-left: 1rem;
+}
+
+.shad-alert-dialog {
+  max-width: 95%;
+  width: fit-content;
+  border-radius: 30px;
+  padding: 2.5rem;
+  background: #fff;
+  outline: none;
+}
+
+.shad-submit-btn {
+  background-color: var(--brand);
+  border-radius: 9999px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.shad-submit-btn:hover { background-color: var(--brand-100); }
+
+.shad-otp {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.shad-otp-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 500;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  width: 4rem;
+  height: 4rem;
+  color: var(--brand-100);
+}
+
+.shad-sheet { padding-top: 0; }
+.shad-sheet button,
+.shad-dialog button {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.shad-dropdown-item { cursor: pointer; }
+.shad-dialog {
+  border-radius: 26px;
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  background: #fff;
+}
+.shad-chart-title { color: #fff; }
+.shad-select-item { cursor: pointer; }
