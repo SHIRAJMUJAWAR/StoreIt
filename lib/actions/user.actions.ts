@@ -66,3 +66,7 @@ export const createAccount = async ({ fullName, email }: { fullName: string; ema
     // return a simple, serializable object
     return parseStringify({ accountId })
 }
+
+export const verifySecret = async ({ accountId, password }: { accountId: string; password: string }) => {
+    "use server"    
+}
