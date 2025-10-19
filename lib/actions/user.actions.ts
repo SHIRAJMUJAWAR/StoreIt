@@ -5,6 +5,9 @@ import { createAdminClient  } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
 // removed unused import
 import { parseStringify } from "../utils";
+import { cookies } from "next/headers";
+import path from "path";
+import { tr } from "zod/locales";
 
  const getUserByEmail = async (email: string) => {
      const { database } = await createAdminClient()
@@ -68,5 +71,18 @@ export const createAccount = async ({ fullName, email }: { fullName: string; ema
 }
 
 export const verifySecret = async ({ accountId, password }: { accountId: string; password: string }) => {
-    "use server"    
+    try {
+        const { account } = await createAdminClient()
+       const session = await account.createSession(accountId, password)
+
+    (await cookies()).set( 'appwrite-session', session.secret , 
+        {
+            path: '/',
+            httpOnly: true,
+            sameSite : 'strict',
+            secure: true,
+        }
+    )
+    } catch (error) {
+        handleError(error, "Failed to verify secret");}
 }
