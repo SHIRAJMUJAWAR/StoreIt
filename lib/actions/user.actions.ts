@@ -25,7 +25,7 @@ import { tr } from "zod/locales";
     console.log( error, message);
   }
 
-    const sendEmailOTP = async (email: string) => {
+  export const sendEmailOTP = async (email: string) => {
     const { account } = await createAdminClient() 
 
     try{
@@ -73,16 +73,16 @@ export const createAccount = async ({ fullName, email }: { fullName: string; ema
 export const verifySecret = async ({ accountId, password }: { accountId: string; password: string }) => {
     try {
         const { account } = await createAdminClient()
-       const session = await account.createSession(accountId, password)
+        const session = await account.createSession({ userId: accountId, secret: password })
 
-    (await cookies()).set( 'appwrite-session', session.secret , 
+        (await cookies()).set('appwrite-session', session.secret , 
         {
             path: '/',
             httpOnly: true,
             sameSite : 'strict',
             secure: true,
         }
-    )
+        )
     } catch (error) {
         handleError(error, "Failed to verify secret");}
 }

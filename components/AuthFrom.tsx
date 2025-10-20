@@ -121,7 +121,7 @@ const AuthFrom = ({type} : {type: AuthType}) => {
     </Form>
     {/* {Verifiction OPT} */}
 
-    { true && (
+    { accountId && (
       <OtpModal email={form.getValues('email')} accountId ={accountId} ></OtpModal>
     )}
     </>

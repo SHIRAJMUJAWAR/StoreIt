@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import {
   AlertDialog,
@@ -17,11 +19,12 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp"
-import { email } from 'zod';
 import { Button } from './ui/button';
+import { sendEmailOTP, verifySecret } from '@/lib/actions/user.actions';
+import { useRouter } from 'next/navigation';
 
 const OtpModal = ({accountId, email} : {accountId :string; email : string}) => {
-
+   const router = useRouter();
    const [isopen, setIsOpen] = useState(true);
    const [password, setPassword] = useState("");
    const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +34,8 @@ const OtpModal = ({accountId, email} : {accountId :string; email : string}) => {
     setIsLoading(true);
 
     try {
+      const sessionId = await verifySecret({ accountId, password });
+      if(sessionId) router.push('/');
     } catch (error) {
       console.error("Error submitting OTP:", error);
     }
@@ -38,7 +43,7 @@ const OtpModal = ({accountId, email} : {accountId :string; email : string}) => {
 } 
 
  const handleResendOtp = async () => {
-     
+     await sendEmailOTP(email);
  }
 
   return (
@@ -71,7 +76,7 @@ const OtpModal = ({accountId, email} : {accountId :string; email : string}) => {
     <AlertDialogFooter>
         <div className='flex w-full flex-col gap-4'>
 
-          <AlertDialogAction className='shad-submit-btn h-12 w-full'>Submit
+          <AlertDialogAction className='shad-submit-btn h-12 w-full' onClick={handleSubmit}>Submit
             {isLoading && <img src="/assets/icons/loader.svg" alt="loading" width={20} height={20} className='ml-2 animate-spin inline-block'/>}
             </AlertDialogAction>
            <div className='subtitle-2 mt-2 text-center text-center text-light-100'>
