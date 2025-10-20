@@ -8,6 +8,7 @@ import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
 import path from "path";
 import { tr } from "zod/locales";
+import { avatarPlaceholder } from "@/constants";
 
  const getUserByEmail = async (email: string) => {
      const { database } = await createAdminClient()
@@ -56,7 +57,7 @@ export const createAccount = async ({ fullName, email }: { fullName: string; ema
                 {
                     fullName,
                     email,
-                    avatar: `https://ui-avatars.com/api/?name=${fullName.split(" ").join("+")}&background=random&size=128`,
+                    avatar:  avatarPlaceholder,
                     accountId,
                 }
             )

@@ -34,8 +34,8 @@ const OtpModal = ({accountId, email} : {accountId :string; email : string}) => {
     setIsLoading(true);
 
     try {
-      const sessionId = await verifySecret({ accountId, password });
-      if(sessionId) router.push('/');
+      await verifySecret({ accountId, password });
+      router.push('/');
     } catch (error) {
       console.error("Error submitting OTP:", error);
     }
