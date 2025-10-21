@@ -6,9 +6,16 @@ import { avatarPlaceholder, navItems } from '@/constants'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { email } from 'zod'
+interface props {
+   fullName :string,
+   avatar :string,
+   email :string
+}
 
-const Sidebar = () => {
-   const pathname = usePathname()
+const Sidebar = ({fullName,avatar,email}: props) => {
+   const pathname = usePathname();
+
    return (
       <aside className=" sidebar">
          <Link href="/">
@@ -47,7 +54,8 @@ const Sidebar = () => {
              <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className='hidden lg:block' >
-               <p className='subtitle-2 capitalize'></p>
+               <p className='subtitle-2 capitalize'>{fullName}</p>
+               <p className='caption'>{email}</p>
             </div>
          </div>
       </aside>
