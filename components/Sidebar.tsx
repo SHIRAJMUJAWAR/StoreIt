@@ -5,6 +5,7 @@ import React from 'react'
 import { avatarPlaceholder, navItems } from '@/constants'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const Sidebar = () => {
    const pathname = usePathname()
@@ -41,7 +42,13 @@ const Sidebar = () => {
          <Image src="/assets/images/files-2.png" alt='logo' width={506} height={418} className='w-full'></Image>
 
          <div className='sidebar-user-info'>
-            <Image src={avatarPlaceholder} alt='avtar' width={44} height={44} className='sidebar-user-avatar ' /> 
+            <Avatar>
+             <AvatarImage src="https://github.com/shadcn.png" />
+             <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <div className='hidden lg:block' >
+               <p className='subtitle-2 capitalize'></p>
+            </div>
          </div>
       </aside>
    )
